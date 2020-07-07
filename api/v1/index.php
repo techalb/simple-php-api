@@ -9,13 +9,23 @@ if(!$controller || !$action){
 
 require '../../vendor/autoload.php';
 require_once('../controllers/jsonplaceholder.php');
+require_once('../controllers/github.php');
 
 switch($controller){
     case 'home':
-        echo 'home';
+        $object = new stdClass();
+        $object->controller = 'home';
+        $object->action = $action;
+        $object->allParams = $_GET;
+
+        echo(json_encode($object));
+
     break;
     case 'jsonplaceholder':
         new JsonPlaceHolder($action);
+    break;
+    case 'github':
+        new GitHub($action);
     break;
     default:
         echo 'Controller not found';

@@ -2,6 +2,7 @@
 
 class JsonPlaceHolder
 {
+    private $baseUrl = "https://jsonplaceholder.typicode.com";
     private $id;
     private $client;
 
@@ -23,7 +24,7 @@ class JsonPlaceHolder
 
     private function posts()
     {
-        $response = $this->client->request('GET', "https://jsonplaceholder.typicode.com/posts" . ($this->id ? "/$this->id" : ""));
+        $response = $this->client->request('GET', "$this->baseUrl/posts" . ($this->id ? "/$this->id" : ""));
 
         // echo $response->getStatusCode(); // 200
         // echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
@@ -35,14 +36,14 @@ class JsonPlaceHolder
 
     private function users()
     {
-        $response = $this->client->request('GET', "https://jsonplaceholder.typicode.com/users");
+        $response = $this->client->request('GET', "$this->baseUrl/users");
 
         return $response->getBody();
     }
 
     private function todos()
     {
-        $response = $this->client->request('GET', "https://jsonplaceholder.typicode.com/todos" . ($this->id ? "/$this->id" : ""));
+        $response = $this->client->request('GET', "$this->baseUrl/todos" . ($this->id ? "/$this->id" : ""));
 
         return $response->getBody();
     }
