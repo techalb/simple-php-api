@@ -11,6 +11,8 @@ require '../../vendor/autoload.php';
 require_once('../controllers/jsonplaceholder.php');
 require_once('../controllers/github.php');
 
+header('Content-Type: application/json');
+
 switch($controller){
     case 'home':
         $object = new stdClass();
